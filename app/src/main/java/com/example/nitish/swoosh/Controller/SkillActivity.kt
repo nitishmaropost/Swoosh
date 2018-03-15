@@ -1,7 +1,8 @@
-package com.example.nitish.swoosh
+package com.example.nitish.swoosh.Controller
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.nitish.swoosh.Utilities.EXTRA_LEAGUE
+import com.example.nitish.swoosh.R
 
 class SkillActivity : BaseActivity() {
 
