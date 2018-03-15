@@ -3,22 +3,23 @@ package com.example.nitish.swoosh.Controller
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import com.example.nitish.swoosh.Utilities.EXTRA_LEAGUE
+import com.example.nitish.swoosh.Model.Player
 import com.example.nitish.swoosh.R
+import com.example.nitish.swoosh.Utilities.EXTRA_PLAYER
 import kotlinx.android.synthetic.main.activity_league.*
 
 class LeagueActivity : BaseActivity() {
 
-    var selectedLeague = ""
+    var player = Player("", skill = "")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_league)
 
         leagueNextButton.setOnClickListener {
-            if (!selectedLeague.isNullOrEmpty()) {
+            if (!player.league.isNullOrEmpty()) {
                 val skillIntent = Intent(this, SkillActivity::class.java)
-                skillIntent.putExtra(EXTRA_LEAGUE, selectedLeague)
+                skillIntent.putExtra(EXTRA_PLAYER, player)
                 startActivity(skillIntent)
             }
             else
@@ -30,7 +31,7 @@ class LeagueActivity : BaseActivity() {
         mensLeagueBtn.setOnClickListener {
             if (mensLeagueBtn.isChecked)
             {
-                selectedLeague = "Mens"
+                player.league = "Mens"
             }
 
             womensLeagueBtn.isChecked = false
@@ -40,7 +41,7 @@ class LeagueActivity : BaseActivity() {
         womensLeagueBtn.setOnClickListener {
             if (mensLeagueBtn.isChecked)
             {
-                selectedLeague = "Womens"
+                player.league = "Womens"
             }
 
             mensLeagueBtn.isChecked = false
@@ -50,7 +51,7 @@ class LeagueActivity : BaseActivity() {
         coedLeagueBtn.setOnClickListener {
             if (mensLeagueBtn.isChecked)
             {
-                selectedLeague = "Co-ed"
+                player.league = "Co-ed"
             }
 
             mensLeagueBtn.isChecked = false
